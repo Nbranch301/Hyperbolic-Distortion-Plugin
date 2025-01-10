@@ -187,10 +187,10 @@ void DistortionEffectProjectAudioProcessor::processBlock (juce::AudioBuffer<floa
             
             float distortedSample = tanh(channelData[sample] * drive);
             
-            if(channelData[sample] > threshold){
-                channelData[sample] = threshold;
-            } else if (channelData[sample] < -threshold){
-                channelData[sample] = -threshold;
+            if(distortedSample > threshold){
+                distortedSample = threshold;
+            } else if (distortedSample < -threshold){
+                distortedSample = -threshold;
             }
             
             channelData[sample] = (dry * channelData[sample] + wet * distortedSample);
